@@ -1,7 +1,6 @@
 #coding=utf-8
 import sys
 import os
-sys.path.append('/home/work/sunxingwu/ime/offline/py_src')
 import  chinese
 import math
 def is_chinese_item(uchar):
@@ -11,7 +10,7 @@ def is_chinese_item(uchar):
         return False
 def is_chinese_word(line):
     for item in line:
-        if(not is_chinese_item(item)):
+        if not is_chinese_item(item):
             return False
     return True
 map_head_freq={}
@@ -36,7 +35,9 @@ def cal(line):
                 word = word_uni.encode('utf-8')
                 if word not in map_word_freq:
                     map_word_freq[word]=1
-                map_word_freq[item] += 1
+                map_word_freq[word] += 1
+        else:
+            bef = ''
 def print_word_prop(file_name):
     fout = open(file_name,'w')
     for item in map_word_freq:
